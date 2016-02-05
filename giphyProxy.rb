@@ -9,8 +9,8 @@ get '/giphy/:base64url' do
     fo.write open(giphy_url).read
   end
   `rm output.mp4 output.ogv`
-  `ffmpeg -y -i pie.mp4 -i 25sec.mp3 -c copy -map 0:0 -map 1:0 output.mp4 -shortest > /dev/null`
-  `avconv output.mp4`
+  `avconv -y -i pie.mp4 -i 25sec.mp3 -c copy -map 0:0 -map 1:0 output.mp4 -shortest > /dev/null`
+  `ffmpeg2theora output.mp4`
   send_file "output.ogv"
   return "Url = #{full_url}"
 
